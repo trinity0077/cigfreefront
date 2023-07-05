@@ -39,7 +39,7 @@ let connected
       )
   }}, [user.token]);
 
-
+  
 
 const handleAddCigarette = () => {
   console.log(user.token)

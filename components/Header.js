@@ -83,7 +83,6 @@ function Header() {
 
 	const handleLogout = () => {
 		dispatch(logout());
-		dispatch(removeAllBookmark());
 		setIsModalVisible(!isModalVisible)
 	};
 
