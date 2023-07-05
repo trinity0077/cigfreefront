@@ -1,0 +1,62 @@
+.articlesContainer {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.sectionTitle {
+	margin-left: 25px;
+}
+
+.cigaddlesscontainer {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	margin: 20px;
+
+}
+
+.btnCigSectionplus {
+	color:rgb(89, 125, 233) ;
+	font-size: 45px;
+	width: 12vw;
+	cursor: pointer;
+}
+
+.btnCigSectionplus:hover {
+	opacity: 0.8;
+}
+
+.btnCigSectionminus {
+	color:rgb(89, 125, 233) ;
+	font-size: 20px;
+	width: 12vw;
+	cursor: pointer;
+}
+
+.btnCigSectionminus:hover {
+	opacity: 0.8;
+}
+
+.cigaddlesscontainerone {
+	
+	align-items: center;
+	justify-content: center;
+	margin: 5px;
+}
+.error {
+	position: absolute;
+	opacity: 0.6; /* ajoute de la transparence*/
+	top: 20%;
+	left: 50%;
+	transform: translate(-50%, -50%);/* test ?! vérifier comment ça fonctionne*/
+	background-color: rgb(89, 125, 233); /* Couleur de fond avec transparence */
+	color: #fff; /* Couleur du texte */
+	font-size: 30px;
+	padding: 10px 20px;
+	border-radius: 5px;
+	z-index: 9999; /* Valeur élevée pour afficher par-dessus le reste */
+  }
