@@ -9,6 +9,8 @@ import 'moment/locale/fr';
 import { Modal } from 'antd';
 // import Link from 'next/link';
 
+
+
 function Header() {
 	const dispatch = useDispatch();
 	const user = useSelector((state) => state.user.value);
@@ -20,6 +22,18 @@ function Header() {
 	const [signInUsername, setSignInUsername] = useState('');
 	const [signInPassword, setSignInPassword] = useState('');
 	const [errorMessage, setErrorMessage] = useState('');
+
+
+	//////////////////////////////////////////////// call for fetch ///////////////////////////////////////////////
+	let backendAdress = ''
+	const backendOnline = true  // switch true or false manualy 
+	if (backendOnline){
+		backendAdress = "https://cigfreeback.vercel.app"
+	}else {
+		backendAdress = "http://localhost:3000"
+	}
+	
+
 
 	const handleCleanHidden = (data) => {
 		dispatch(cleanhiddenArticle(data))
@@ -36,14 +50,15 @@ function Header() {
 
 
 	const handleRegister = () => {
-		fetch('http://localhost:3000/users/signup', {
+		console.log(backendAdress)
+		fetch(`${backendAdress}/users/signup`, {
 		method: 'POST',
-			headers: { 'Content-Type': 'application/json',
-			'Access-Control-Allow-Origin': 'http://localhost:3000' // Ajoutez cet en-tête
+		headers: { 'Content-Type': 'application/json',
+			'Access-Control-Allow-Origin': '*' //`${backendAdress}` // Ajoutez cet en-tête
 		 },
-			
-			body: JSON.stringify({ email: signUpUsername, password: signUpPassword }),
-		}).then(response => response.json())
+		body: JSON.stringify({ email: signUpUsername, password: signUpPassword }),
+		})
+		.then(response => response.json())
 			.then(data => {
 				console.log(data)
 				if (data.result) {
@@ -62,11 +77,11 @@ function Header() {
 	};
 
 	const handleConnection = () => {
-
-		fetch('http://localhost:3000/users/signin', {
+		console.log(backendAdress)
+		fetch(`${backendAdress}/users/signin`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json',
-			'Access-Control-Allow-Origin': 'http://localhost:3000'
+			'Access-Control-Allow-Origin': 'http://localhost:3001'
 		 },
 			body: JSON.stringify({ email: signInUsername, password: signInPassword }),
 		}).then(response => response.json())
