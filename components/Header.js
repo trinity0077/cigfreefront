@@ -81,7 +81,7 @@ function Header() {
 		fetch(`${backendAdress}/users/signin`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json',
-			'Access-Control-Allow-Origin': 'http://localhost:3001'
+			'Access-Control-Allow-Origin': `${backendAdress}`
 		 },
 			body: JSON.stringify({ email: signInUsername, password: signInPassword }),
 		}).then(response => response.json())
