@@ -60,8 +60,11 @@ function Home() {
                 const calculateEconomies = async () => {
                   const economies = await Math.round(calculateprice(Number(totalNoSmoke), cigaretteprice)* 100) / 100;
                   setTotalSaveInEuroCigarette(economies.toFixed(2));
-                };
-                calculateEconomies();        
+                }; 
+                // function qui arrondi le resultat de calculateprice. calculate price
+                // prend 2 valleur totalnosmoke formater en number et du prix de cigarette
+                // le toFixed() apres permet de formater le resultat poru garder toujours 2 chiffre apres la virgule.
+                calculateEconomies();// lance la function ecrire au dessus qui est asynchrone. 
             
           } else {
             // Gérez le cas où la requête n'a pas réussi ou les données ne sont pas disponibles
