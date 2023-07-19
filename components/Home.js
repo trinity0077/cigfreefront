@@ -61,7 +61,7 @@ function Home() {
                   setTotalSaveInEuroCigarette(economies);
                 };
                 calculateEconomies();        
-            // Faites quelque chose avec les valeurs totalsmoke et totalnotsmoke...
+            
           } else {
             // Gérez le cas où la requête n'a pas réussi ou les données ne sont pas disponibles
             console.log(data.error);
