@@ -26,7 +26,7 @@ function Header() {
 
 	//////////////////////////////////////////////// call for fetch ///////////////////////////////////////////////
 	let backendAdress = ''
-	const backendOnline = true  // switch true or false manualy 
+	const backendOnline = false  // switch true or false manualy 
 	if (backendOnline){
 		backendAdress = "https://cigfreeback.vercel.app"
 	}else {
@@ -35,9 +35,7 @@ function Header() {
 	
 
 
-	const handleCleanHidden = (data) => {
-		dispatch(cleanhiddenArticle(data))
-	}
+
 
 	useEffect(() => {
 		setDate(new Date());
@@ -77,7 +75,7 @@ function Header() {
 	};
 
 	const handleConnection = () => {
-		console.log(backendAdress)
+		console.log(backendAdress, `user info conection  mail ${signInUsername} et pdw ${signInPassword}`)
 		fetch(`${backendAdress}/users/signin`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json',
@@ -105,7 +103,7 @@ function Header() {
 	};
 
 	let modalContent;
-	console.log(user.token)
+	console.log(user.token, isModalVisible)
 	if (!user.token) {
 		modalContent = (
 			<div className={styles.registerContainer}>
@@ -131,9 +129,12 @@ function Header() {
 	if (user.token) {
 		userSection = (
 			<div className={styles.logoutSection}>
-				<p>Welcome {user.email} / </p>
-				<button onClick={() => handleLogout()}>Logout</button>
-				<FontAwesomeIcon onClick={() => handleCleanHidden([])} className={styles.eye} icon={faEye} /*style={{color: '#3749a4'}}*/ />
+				<p>Salutation</p>
+				<div className={styles.logoutSectionUsername}>{user.email}</div>
+				<div className={styles.logoutSectionbot}>
+				<button onClick={() => handleLogout()}> Logout</button>
+				{/* <FontAwesomeIcon  onClick={showModal} className={styles.eye} icon={faEye}  /> */}
+				</div>
 			</div>
 		);
 		
@@ -142,13 +143,13 @@ function Header() {
 			userSection =
 				<div className={styles.headerIcons}>
 					<FontAwesomeIcon onClick={showModal} className={styles.userSection} icon={faXmark} />
-					<FontAwesomeIcon onClick={() => handleCleanHidden([])} className={styles.eye} icon={faEye} /*style={{color: '#3749a4'}}*/ />
+					{/* <FontAwesomeIcon onClick={() => handleLogout()} className={styles.eye} icon={faEye}  /> */}
 				</div>
 		} else {
 			userSection =
 				<div className={styles.headerIcons}>
 					<FontAwesomeIcon onClick={showModal} className={styles.userSection} icon={faUser} />
-					<FontAwesomeIcon onClick={() => handleCleanHidden([])} className={styles.eye} icon={faEye} /*style={{color: '#3749a4'}}*/ />
+					{/* <FontAwesomeIcon onClick={() => handleLogout()} className={styles.eye} icon={faEye}  /> */}
 				</div>
 		}
 	}
@@ -157,7 +158,7 @@ function Header() {
 		<header className={styles.header}>
 			<div className={styles.logoContainer}>
 				<Moment className={styles.date} date={date} format="D MMMM YYYY" />
-				<h1 className={styles.title}>Cig Free</h1>
+				<h1 className={styles.title}>Ciga Free</h1>
 				{userSection}
 			</div>
 

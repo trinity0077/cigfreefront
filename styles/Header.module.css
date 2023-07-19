@@ -9,6 +9,9 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	border-bottom-left-radius: 15px;
+ 	border-bottom-right-radius: 15px;
+	background-color: white;
 }
 
 .title {
@@ -16,14 +19,17 @@
 	font-family: "Old London";
 	color : rgb(89, 125, 233);
 	text-shadow: 1px 1px 0px #000;
+	margin: 3px;
 }
 
 .logoContainer {
 	width: 100vw;
+	min-height: 15vh;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 0px 30px 0px 30px;
+	padding: 0px 10px 0px 10px;
+	
 }
 
 .linkContainer {
@@ -50,6 +56,7 @@
 .date {
 	width: 12vw;
 	text-align: center;
+	font-size: 20px;
 }
 
 .link {
@@ -63,20 +70,26 @@
 	color: rgba(233, 190, 89);
 }
 
+
 .registerContainer {
 	display: flex;
+	
+	justify-content: center;
 	margin-bottom: 10px;
 	border-top: 0.5px lightgray solid;
 }
 
+#react-modals {
+	width: 100%;
+}
+
 .registeredContainer {
+	
 	display: flex;
-	justify-content: center;
-	align-items: center;
+
 }
 
 .registerSection {
-	width: 250px;
 	margin: 10px;
 	display: flex;
 	flex-direction: column;
@@ -84,9 +97,20 @@
 }
 
 .logoutSection {
+	align-items: center;
+}
+.logoutSectionUsername {
+	display : flex;
+	justify-content: right;
+	font-size: 22px;
+	color: orange;
+	padding-left: 6px;
+}
+.logoutSectionbot{
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: right;
+	padding-left: 6px;
 }
 
 .headerIcons {
@@ -106,4 +130,25 @@
 
 .error {
 	color: brown;
+}
+
+@media (min-width: 768px) {
+.logoutSection {
+	display:flex;
+	align-items: center;
+	justify-content: center;
+}
+.registerContainer {
+	display: flex;
+	
+	justify-content: space-between;
+	
+}
+.date {
+	width: 12vw;
+	text-align: center;
+	font-size: 20px;
+}
+
+
 }
