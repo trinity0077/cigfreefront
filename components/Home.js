@@ -22,7 +22,7 @@ function Home() {
   const [usertoken, setUserToken] = useState('');
   
 	let backendAdress = ''
-  let cigaretteprice = 0.5
+  let cigaretteprice = 0.6
 
 	const backendOnline = false  // switch true or false manualy 
 	if (backendOnline){
@@ -51,14 +51,15 @@ function Home() {
             settotalNoSmoked(totalNoSmoke)
 
                 const calculateDepense = async () => {
-                  const depense = await calculateprice(Number(totalSmoke), cigaretteprice);
-                  setTotalDepenseCigarette(depense);
+                  // Math.round(x * 100) / 100
+                  const depense = await Math.round(calculateprice(Number(totalSmoke), cigaretteprice)* 100) / 100;
+                  setTotalDepenseCigarette(depense.toFixed(2));
                 };
                 calculateDepense();
 
                 const calculateEconomies = async () => {
-                  const economies = await calculateprice(Number(totalNoSmoke), cigaretteprice);
-                  setTotalSaveInEuroCigarette(economies);
+                  const economies = await Math.round(calculateprice(Number(totalNoSmoke), cigaretteprice)* 100) / 100;
+                  setTotalSaveInEuroCigarette(economies.toFixed(2));
                 };
                 calculateEconomies();        
             
