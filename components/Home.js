@@ -49,9 +49,18 @@ function Home() {
             const totalNoSmoke = userDataNotSmoked.length;
             settotalSmoked(totalSmoke)
             settotalNoSmoked(totalNoSmoke)
-            setTotalDepenseCigarette(calculateprice(Number(totalSmoked), cigaretteprice))
-            setTotalSaveInEuroCigarette(calculateprice(Number(totalNoSmoked), cigaretteprice))
-            
+
+                const calculateDepense = async () => {
+                  const depense = await calculateprice(Number(totalSmoke), cigaretteprice);
+                  setTotalDepenseCigarette(depense);
+                };
+                calculateDepense();
+
+                const calculateEconomies = async () => {
+                  const economies = await calculateprice(Number(totalNoSmoke), cigaretteprice);
+                  setTotalSaveInEuroCigarette(economies);
+                };
+                calculateEconomies();        
             // Faites quelque chose avec les valeurs totalsmoke et totalnotsmoke...
           } else {
             // Gérez le cas où la requête n'a pas réussi ou les données ne sont pas disponibles
@@ -70,7 +79,7 @@ function Home() {
 
  //////////////////test fonction  gain / depense cigarette ///////
  console.log(calculateprice(Number(totalSmoked), 0.5))
- 
+
  ////////////////////////
 
 const handleAddCigarette = () => {
@@ -127,7 +136,7 @@ const handleAddNoCigarette = () => {
 				console.log(data , 'response data add no smoke cigarette')
 				if (data.result) {
             settotalNoSmoked(totalNoSmoked + 1)
-            setTotalSaveInEuroCigarette(calculateprice(Number(totalNoSmoked), cigaretteprice))
+            setTotalSaveInEuroCigarette( calculateprice(Number(totalNoSmoked), cigaretteprice))
 				}else {
 					setErrorMessage(data.error); // Lève une erreur avec le message d'erreur du backend
 					 // Supprime le message d'erreur après 2 secondes
@@ -176,11 +185,15 @@ return (
         <div className={styles.infoUserContainerOne}>
           <div className={styles.infoUserContainerSmokeCigCount}>
             <div className={styles.infoUserContainerSmokeCigCountBig}>{totalSmoked}</div>
-            <p>cigarettes fumées ≃ {totalDepenseCigarette} €</p>
+            <p>Cigarettes fumées ≃ 
+            <span className={styles.calculatePriceCss}>{totalDepenseCigarette} </span> €
+            </p>
           </div>
           <div className={styles.infoUserContainerSmokeCigCount}>
             <div className={styles.infoUserContainerSmokeCigCountBig}>{totalNoSmoked}</div>
-            <p>cigarettes économisées ≃ {totalSaveInEuroCigarette} €</p> 
+            <p>Cigarettes économisées ≃ 
+              <span className={styles.calculatePriceCss} >{totalSaveInEuroCigarette} </span> €
+              </p> 
           </div>
         </div>
         <div className={styles.cigaddlesscontainerone}>

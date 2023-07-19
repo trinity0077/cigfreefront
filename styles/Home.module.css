@@ -102,10 +102,17 @@
   }
   .infoUserContainerSmokeCigCountBig{
 	color:rgb(89, 125, 233);
+	text-shadow: -1px -1px 0px #000;
 	align-items: center;
 	justify-content: center;
-	font-size: 30px;
+	font-size: 35px;
 	margin: 5px;
+  }
+  .calculatePriceCss{
+	font-weight: bold;
+	font-size: 30px;
+	color: rgb(54, 98, 231);
+	text-shadow: 1px 1px 0px #fef8f8;
   }
 
   @media (min-width: 768px) { /* Par exemple, à partir de 768px de large */

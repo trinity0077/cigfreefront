@@ -103,7 +103,7 @@ function Header() {
 	};
 
 	let modalContent;
-	console.log(user.token, isModalVisible)
+	console.log('token user',user.token)
 	if (!user.token) {
 		modalContent = (
 			<div className={styles.registerContainer}>
