@@ -132,7 +132,7 @@
 	color: brown;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 798px) {
 .logoutSection {
 	display:flex;
 	align-items: center;

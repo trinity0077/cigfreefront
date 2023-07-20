@@ -22,6 +22,26 @@
 .sectionTitle {
 	margin-left: 25px;
 }
+.graphecontainerone {
+	box-sizing:content-box;
+	background-color: rgb(204, 212, 237);
+	margin: 10px;
+	border-radius: 10px;
+	border: 1px solid rgb(89, 125, 233);
+	 /* Limite la hauteur du conteneur à 40% de la hauteur de l'écran */
+     /* Cache le contenu qui dépasse */
+}
+.graphecontainer {
+	box-sizing:content-box;
+	margin: 10px;
+	height:100%;
+
+
+}
+.graphe {
+
+	box-sizing:content-box;
+}
 
 .cigaddlesscontainer {
 	display: flex;
@@ -115,7 +135,7 @@
 	text-shadow: 1px 1px 0px #fef8f8;
   }
 
-  @media (min-width: 768px) { /* Par exemple, à partir de 768px de large */
+  @media (min-width: 798px) { /* Par exemple, à partir de 768px de large */
 	.infoUserContainerOne {
 		display: flex;
 		flex-direction: row; /* Affichage en ligne */
@@ -144,6 +164,32 @@
 		margin: 10px;
 	}
 
+	.graphecontainer {
+		box-sizing:content-box;
+		margin: 10px;
+		margin-left: 10%;
+		margin-right: 10%;
+		
+	
+	
+	}
+	.graphe {
+	
+		box-sizing:content-box;
+	}
+
+
+}
+@media (min-width: 1000px) { /* Par exemple, à partir de 768px de large */
+	.graphecontainer {
+		box-sizing:content-box;
+		margin: 10px;
+		margin-left: 18%;
+		margin-right: 18%;
+		
+	
+	
+	}
 }
 
 @media (min-width: 1500px) { /* Par exemple, à partir de 768px de large */
@@ -155,6 +201,13 @@
 		align-items: center;
 		margin: 10px;
 		
+		
+	}
+	.graphecontainer {
+		box-sizing:content-box;
+		margin: 10px;
+		margin-left: 23%;
+		margin-right: 23%;
 		
 	}
 }

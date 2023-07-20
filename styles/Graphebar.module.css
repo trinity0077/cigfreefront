@@ -1,0 +1,45 @@
+.App {
+    box-sizing:content-box;
+    margin: 10px;
+    padding: 0%;
+
+}
+
+.graphebarcontainer {
+    
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing:content-box;
+}
+
+.card {
+    padding: 1%;
+    flex: 1 0 50%;
+    width: 500px;
+    height: 230px;
+
+    
+}
+
+@media (min-width: 798px) {
+    .App {
+        box-sizing:border-box;
+        margin: 10px;
+        padding: 0%;
+    
+    }
+    
+    .graphebarcontainer {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .card {
+        padding: 1%;
+        flex: 1 0 50%;
+        width: 500px;
+        height: 200px;
+        
+    
+        
+    }
+}
