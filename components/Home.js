@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Head from "next/head";
-import Graphebar from "./Graphebar";
+import Graphebar from "./Graphebar";//Graphebarjour
+import Graphebarjour from "./Graphebarjour";
 import styles from "../styles/Home.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
@@ -33,7 +34,8 @@ function Home() {
 
   //teste chartdata en attendant de le recuperer la donné de la BDD
   const chartData = [65, 60, 59, 80, 56, 78, 89];
-
+  const chartDataDay = [28, 22, 17, 15, 26, 16, 19];
+  // console.log('verif contenu chartDataDay qui vient de home',chartDataDay)
 
   useEffect(() => {
     if (user.token) {
@@ -46,6 +48,7 @@ function Home() {
 
           if (data.result) {
             const { userDataSmoke, userDataNotSmoked } = data;
+            console.log(data)
             const totalSmoke = userDataSmoke.length;
             const totalNoSmoke = userDataNotSmoked.length;
             settotalSmoked(totalSmoke);
@@ -240,6 +243,11 @@ function Home() {
             </div>
           </div>
 
+          <div className={styles.graphecontainerone} >
+            <div className={styles.graphecontainer}>
+          <Graphebarjour chartDataDay={chartDataDay} className={styles.graphe} /> 
+          </div>
+          </div>
           
           <div className={styles.graphecontainerone} >
             <div className={styles.graphecontainer}>

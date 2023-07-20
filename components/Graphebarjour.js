@@ -1,37 +1,53 @@
+import { min } from "moment";
 import styles from "../styles/Graphebar.module.css";
 import { useState, useEffect } from "react";
 import { Bar } from "react-chartjs-2";
 
-function Graphebar({ chartData }) {
+function Graphebarjour({ chartDataDay }) {
   ///  mise a jour des nom des mois du chartbar
-  const [monthNames, setMonthNames] = useState([]);
+  const [dayNames, setDayNames] = useState([]);
+  const [minYValue, setMinYValue] = useState(0);
+  const [maxYValue, setMaxYValue] = useState(40);
 
   //usefect pour recupere la langue du navigateur
   //et
   useEffect(() => {
-    const fetchMonthNames = async () => {
+    const fetchDayNames = async () => {
       try {
         const locale = navigator.language; // Obtenir la langue par défaut de l'utilisateur
-        const options = { month: "long" };
-        const monthNames = Array.from({ length: 7 }, (_, index) => {
+        const options = { weekday: "long" }; // recuperer le nom ecrit du jour
+        const dayNames = Array.from({ length: 7 }, (_, index) => { // sur les 7 dernier jours
           const currentDate = new Date();
-          currentDate.setMonth(currentDate.getMonth() - index);
+          
+          currentDate.setDate(currentDate.getDate() - index); // prend l'index du jour actuel  - ce d avant
           return new Intl.DateTimeFormat(locale, options).format(currentDate);
         });
-        setMonthNames(monthNames.reverse());
+        setDayNames(dayNames.reverse());
+
+        const minDataValue = Math.min(...chartDataDay);
+    const maxDataValue = Math.max(...chartDataDay);
+
+    setMinYValue(Math.floor(minDataValue / 5) * 5 - 5); // 5 points en dessous du minimum réel
+    setMaxYValue(Math.ceil(maxDataValue / 5) * 5 + 5); // 5 points au-dessus du maximum réel
+
       } catch (error) {
         console.error(error);
       }
     };
-    fetchMonthNames();
-  }, []);
-//   console.log(monthNames)
+    fetchDayNames();
+  }, [chartDataDay]);
+// console.log(dayNames)    // verif de la recuperation du nom des jours
+// console.log('verif contenu chartDataDay qui vient de home',chartDataDay)  //
+
+
+// console.log(Math.floor(minDataValue / 5) * 5 - 5)
+
   const dataChart = {
-    labels: monthNames,
+    labels: dayNames,
     datasets: [
       {
-        label: "Cigarette fumé par mois",
-        data: chartData, //[65, 59, 80, 81, 56, 55, 40] exemple de chartdata.data
+        label: "Cigarette fumé par jour",
+        data: chartDataDay, //[65, 59, 80, 81, 56, 55, 40] exemple de chartdata.data
         backgroundColor: [
           "rgba(255, 99, 132, 0.3)",
           "rgba(255, 159, 64, 0.3)",
@@ -63,7 +79,14 @@ function Graphebar({ chartData }) {
       x: {
         type: "category", // Précisez que l'échelle de l'axe X est de type "category"
       },
-      y: {},
+      y: {
+        beginAtZero: true
+      },
+    },
+    plugins: {
+      tooltip: {
+        enabled: false, // Désactiver les infobulles
+      },
     },
   };
 
@@ -81,4 +104,4 @@ function Graphebar({ chartData }) {
   );
 }
 
-export default Graphebar;
+export default Graphebarjour;
