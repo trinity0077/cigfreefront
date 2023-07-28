@@ -30,7 +30,7 @@ function Home() {
   let BACKEND_ADDRESS = "";
   let cigaretteprice = 0.6;
 
-  const backendOnline = true; // switch true or false manualy
+  const backendOnline = false; // switch true or false manualy
   if (backendOnline) {
     BACKEND_ADDRESS = 'https://cigfreeback.vercel.app';
   } else {
