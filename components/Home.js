@@ -20,7 +20,7 @@ function Home() {
   const [totalNoSmoked, settotalNoSmoked] = useState(0);
   const [totalDepenseCigarette, setTotalDepenseCigarette] = useState(0);
   const [totalSaveInEuroCigarette, setTotalSaveInEuroCigarette] = useState(0);
-  const [reaoadData, setRealoadData] = useState(false);
+  const [realoadData, setRealoadData] = useState(false);
 
   let backendAdress = "";
   let cigaretteprice = 0.6;
@@ -87,7 +87,7 @@ function Home() {
 
       console.log(user.token);
     }
-  }, [user.token, reaoadData]);
+  }, [user.token, realoadData]);
 
   //////////////////test fonction  gain / depense cigarette ///////
 
@@ -101,7 +101,7 @@ function Home() {
         console.log(data, "response data add cigarette");
         if (data.result) {
           setRealoadData(prevRealoadData => !prevRealoadData)
-          // relance l useeffect poru mettre a jour les donnés 
+          // relance l useeffect pour mettre a jour les donnés 
           //une fois que l'on a la validation
         } else {
           setErrorMessage(data.error); // Lève une erreur avec le message d'erreur du backend

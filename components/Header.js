@@ -80,7 +80,13 @@ function Header() {
       .then((data) => {
         console.log(data, "connection");
         if (data.result) {
-          dispatch(login({ email: signInUsername, token: data.token }));
+          dispatch(
+            login({
+              email: signInUsername,
+              token: data.token,
+              dateCreation: data.dateCreation,
+            })
+          );
           setSignInUsername("");
           setSignInPassword("");
           setIsModalVisible(false);
@@ -149,6 +155,7 @@ function Header() {
   }
 
   let userSection;
+  let userSectionDateinscription;
   if (user.token) {
     userSection = (
       <div className={styles.logoutSection}>
@@ -160,6 +167,20 @@ function Header() {
         </div>
       </div>
     );
+    const formattedDateCreationUser = new Date(
+      user.dateCreation
+    ).toLocaleDateString();
+    userSectionDateinscription = (
+      <div>
+        <div>
+          <div className="sectionDate">
+            Inscrit depuis le{" "}
+            <Moment date={formattedDateCreationUser} format="D MMMM YYYY" />
+          </div>
+        </div>
+      </div>
+    );
+    // ajout de dateCreation ici via route signin.+ reducer
   } else {
     if (isModalVisible) {
       userSection = (
@@ -169,7 +190,6 @@ function Header() {
             className={styles.userSection}
             icon={faXmark}
           />
-          {/* <FontAwesomeIcon onClick={() => handleLogout()} className={styles.eye} icon={faEye}  /> */}
         </div>
       );
     } else {
@@ -180,7 +200,6 @@ function Header() {
             className={styles.userSection}
             icon={faUser}
           />
-          {/* <FontAwesomeIcon onClick={() => handleLogout()} className={styles.eye} icon={faEye}  /> */}
         </div>
       );
     }
@@ -193,11 +212,7 @@ function Header() {
         <h1 className={styles.title}>Ciga Free</h1>
         {userSection}
       </div>
-
-      {/* <div className={styles.linkContainer}>
-				<Link href="/"><span className={styles.link}>Articles</span></Link>
-				<Link href="/bookmarks"><span className={styles.link}>Bookmarks</span></Link>
-			</div> */}
+      {userSectionDateinscription}
 
       {isModalVisible && (
         <div id="react-modals">

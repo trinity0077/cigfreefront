@@ -40,7 +40,6 @@ function Graphebarjour({ chartDataDay }) {
 // console.log('verif contenu chartDataDay qui vient de home',chartDataDay)  //
 
 
-// console.log(Math.floor(minDataValue / 5) * 5 - 5)
 
   const dataChart = {
     labels: dayNames,
