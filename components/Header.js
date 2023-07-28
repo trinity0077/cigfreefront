@@ -22,14 +22,19 @@ function Header() {
   const [errorMessage, setErrorMessage] = useState("");
 
   //////////////////////////////////////////////// call for fetch ///////////////////////////////////////////////
-  let BACKEND_ADDRESS = "";
-  const backendOnline = false; // switch true or false manualy
-  if (backendOnline) {
-    BACKEND_ADDRESS = "https://cigfreeback.vercel.app";
-    //                 https://cigfreeback.vercel.app/
-  } else {
-    BACKEND_ADDRESS = "http://localhost:3000";
-  }
+  // let BACKEND_ADDRESS = "";
+
+  const BACKEND_ADDRESS = window.location.hostname === 'localhost'
+  ? 'http://localhost:3000'
+  : 'https://cigfreeback.vercel.app';
+
+  // const backendOnline = false; // switch true or false manualy
+  // if (backendOnline) {
+  //   BACKEND_ADDRESS = "https://cigfreeback.vercel.app";
+  //   //                 https://cigfreeback.vercel.app/
+  // } else {
+  //   BACKEND_ADDRESS = "http://localhost:3000";
+  // }
 
   useEffect(() => {
     setDate(new Date());

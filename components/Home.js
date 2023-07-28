@@ -27,15 +27,13 @@ function Home() {
   const [chartData, setChartData] = useState([]);
   const [chartDataDay, setChartDataDay] = useState([]);
 
-  let BACKEND_ADDRESS = "";
+  // let BACKEND_ADDRESS = ""
   let cigaretteprice = 0.6;
 
-  const backendOnline = false; // switch true or false manualy
-  if (backendOnline) {
-    BACKEND_ADDRESS = 'https://cigfreeback.vercel.app';
-  } else {
-    BACKEND_ADDRESS = 'http://localhost:3000';
-  }
+  const BACKEND_ADDRESS = window.location.hostname === 'localhost'
+  ? 'http://localhost:3000'
+  : 'https://cigfreeback.vercel.app';
+
 console.log('backend adrresssss',BACKEND_ADDRESS )
   //teste chartdata en attendant de le recuperer la donné de la BDD
   // const chartData = [65, 60, 59, 80, 56, 78, 89];
