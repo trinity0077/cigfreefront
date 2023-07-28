@@ -36,7 +36,7 @@ function Home() {
   } else {
     BACKEND_ADDRESS = 'http://localhost:3000';
   }
-
+console.log('backend adrresssss',BACKEND_ADDRESS )
   //teste chartdata en attendant de le recuperer la donné de la BDD
   // const chartData = [65, 60, 59, 80, 56, 78, 89];
   // const chartDataDay = [28, 22, 17, 15, 26, 16, 19];
