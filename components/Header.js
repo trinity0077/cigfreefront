@@ -22,12 +22,12 @@ function Header() {
   const [errorMessage, setErrorMessage] = useState("");
 
   //////////////////////////////////////////////// call for fetch ///////////////////////////////////////////////
-  let backendAdress = "";
-  const backendOnline = false; // switch true or false manualy
+  let BACKEND_ADDRESS = "";
+  const backendOnline = true; // switch true or false manualy
   if (backendOnline) {
-    backendAdress = "https://cigfreeback.vercel.app";
+    BACKEND_ADDRESS = "https://cigfreeback.vercel.app";
   } else {
-    backendAdress = "http://localhost:3000";
+    BACKEND_ADDRESS = "http://localhost:3000";
   }
 
   useEffect(() => {
@@ -39,12 +39,12 @@ function Header() {
   }, []);
 
   const handleRegister = () => {
-    console.log(backendAdress);
-    fetch(`${backendAdress}/users/signup`, {
+    console.log(BACKEND_ADDRESS);
+    fetch(`${BACKEND_ADDRESS}/users/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*", //`${backendAdress}` // Ajoutez cet en-tête
+        "Access-Control-Allow-Origin": "*", //`${BACKEND_ADDRESS}` // Ajoutez cet en-tête
       },
       body: JSON.stringify({ email: signUpUsername, password: signUpPassword }),
     })
@@ -68,10 +68,10 @@ function Header() {
 
   const handleConnection = () => {
     console.log(
-      backendAdress,
+      BACKEND_ADDRESS,
       `user info conection  mail ${signInUsername} et pdw ${signInPassword}`
     );
-    fetch(`${backendAdress}/users/signin`, {
+    fetch(`${BACKEND_ADDRESS}/users/signin`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: signInUsername, password: signInPassword }),
