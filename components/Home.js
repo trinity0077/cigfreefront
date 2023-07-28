@@ -6,6 +6,9 @@ import Graphebarjour from "./Graphebarjour";
 import styles from "../styles/Home.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
+import { groupDataByMonth } from '../modules/groupDataByMonth';
+import { groupDataByDay } from '../modules/groupDataByDay';
+
 
 const { calculateprice } = require("../modules/calculateprice"); // module de calcule du prix
 
@@ -21,34 +24,45 @@ function Home() {
   const [totalDepenseCigarette, setTotalDepenseCigarette] = useState(0);
   const [totalSaveInEuroCigarette, setTotalSaveInEuroCigarette] = useState(0);
   const [realoadData, setRealoadData] = useState(false);
+  const [chartData, setChartData] = useState([]);
+  const [chartDataDay, setChartDataDay] = useState([]);
 
-  let backendAdress = "";
+  let BACKEND_ADDRESS = "";
   let cigaretteprice = 0.6;
 
-  const backendOnline = false; // switch true or false manualy
+  const backendOnline = true; // switch true or false manualy
   if (backendOnline) {
-    backendAdress = "https://cigfreeback.vercel.app";
+    BACKEND_ADDRESS = 'https://cigfreeback.vercel.app';
   } else {
-    backendAdress = "http://localhost:3000";
+    BACKEND_ADDRESS = 'http://localhost:3000';
   }
 
   //teste chartdata en attendant de le recuperer la donné de la BDD
-  const chartData = [65, 60, 59, 80, 56, 78, 89];
-  const chartDataDay = [28, 22, 17, 15, 26, 16, 19];
+  // const chartData = [65, 60, 59, 80, 56, 78, 89];
+  // const chartDataDay = [28, 22, 17, 15, 26, 16, 19];
   // console.log('verif contenu chartDataDay qui vient de home',chartDataDay)
 
   useEffect(() => {
     if (user.token) {
+
+
       const fetchDataSmoke = async () => {
         try {
           const response = await fetch(
-            `${backendAdress}/users/datasmoke/${user.token}`
+            `${BACKEND_ADDRESS}/users/datasmoke/${user.token}`
           );
           const data = await response.json();
+          console.log(data)
 
           if (data.result) {
             const { userDataSmoke, userDataNotSmoked } = data;
-            console.log(data)
+
+            setChartData(groupDataByMonth(userDataSmoke))
+            setChartDataDay(groupDataByDay(userDataSmoke))
+            
+            console.log(chartData,'consolelog dans fecth de chartdatabymonth')
+            console.log(chartDataDay,'consolelog dans fecth de chartdatabyDay')
+            
             const totalSmoke = userDataSmoke.length;
             const totalNoSmoke = userDataNotSmoked.length;
             settotalSmoked(totalSmoke);
@@ -95,7 +109,7 @@ function Home() {
 // 4 fonction Identique sur l eprincipe, com dans la 1 ere
   const handleAddCigarette = () => {
    // console.log(user.token);
-    fetch(`${backendAdress}/users/addsmokecigarettes/${user.token}`)
+    fetch(`${BACKEND_ADDRESS}/users/addsmokecigarettes/${user.token}`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data, "response data add cigarette");
@@ -114,7 +128,7 @@ function Home() {
   };
 
   const handleDelcigarette = () => {
-    fetch(`${backendAdress}/users/deletesmokecigarettes/${user.token}`, {
+    fetch(`${BACKEND_ADDRESS}/users/deletesmokecigarettes/${user.token}`, {
       method: "DELETE", // ne pas oublié le delete dans la methode, car en get ça fera un 404 ERROR
       // car coté backend c'est une route delete
     })
@@ -136,7 +150,7 @@ function Home() {
 
   const handleAddNoCigarette = () => {
    // console.log(user.token);
-    fetch(`${backendAdress}/users/addnotsmokecigarettes/${user.token}`)
+    fetch(`${BACKEND_ADDRESS}/users/addnotsmokecigarettes/${user.token}`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data, "response data add no smoke cigarette");
@@ -153,7 +167,7 @@ function Home() {
   };
 
   const handleDelNocigarette = () => {
-    fetch(`${backendAdress}/users/deletenotsmokecigarettes/${user.token}`, {
+    fetch(`${BACKEND_ADDRESS}/users/deletenotsmokecigarettes/${user.token}`, {
       method: "DELETE", // ne pas oublié le delete dans la methode, car en get ça fera un 404 ERROR
       // car coté backend c'est une route delete
     })
