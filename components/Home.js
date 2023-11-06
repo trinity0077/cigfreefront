@@ -32,7 +32,7 @@ function Home() {
 
   const BACKEND_ADDRESS = window.location.hostname === 'localhost'
   ? 'http://localhost:3000'
-  : 'https://cigfreeback.vercel.app';
+  : 'https://cig-backend-vercel.vercel.app';
 
 console.log('backend adrresssss',BACKEND_ADDRESS )
   //teste chartdata en attendant de le recuperer la donné de la BDD
