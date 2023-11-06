@@ -26,17 +26,19 @@
 	min-height: 15vh;
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
+	
+	
 	
 	
 	
 }
 .title {
-	font-size: 60px;
-	font-family: "Old London";
+	font-size: 45px;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 	color : rgb(233, 204, 89);
 	text-shadow: 1px 1px 0px #000;
 	margin: 0px;
+	justify-content: top;
 }
 
 
@@ -118,6 +120,7 @@
 }
 
 .logoutSection {
+	justify-content: center;
 	align-items: center;
 }
 .logoutSectionUsername {
@@ -165,6 +168,36 @@
 }
 
 @media (min-width: 798px) {
+
+	.topHeadercontainer{
+	
+		display: flex;
+		
+		justify-content: center;
+		align-items: center;
+		
+	}
+	.logoContainer {
+		
+		width: 98vw;
+		min-height: 15vh;
+		display: flex;
+		justify-content: space-around;
+		
+	}	
+	.title {
+		display: flex;
+		font-size: 45px;
+		font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+		color : rgb(233, 204, 89);
+		text-shadow: 1px 1px 0px #000;
+		margin: 0px;
+		justify-content: center;
+		align-items: center;
+		
+		
+	}
+
 .logoutSection {
 	display:flex;
 	align-items: center;

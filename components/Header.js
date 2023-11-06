@@ -217,14 +217,14 @@ function Header() {
       <div className={styles.headerAllContainer}>
        <div className={styles.topHeadercontainer}>
       <div className={styles.logoContainer}>
-        <Moment className={styles.date} date={date} format="D MMMM YYYY" />
+        {/* <Moment className={styles.date} date={date} format="D MMMM YYYY" /> */}
         <h1 className={styles.title}>Ciga Free</h1>
         {userSection}
       </div>
       </div>
       <div className={styles.botHeadercontainer}>
         <div className={styles.botselection}>
-          <Lol></Lol>
+          <Lol/>
           {userSectionDateinscription}
         </div>
       </div>
