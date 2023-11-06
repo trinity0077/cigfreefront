@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "../reducers/user";
 import styles from "../styles/Header.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faXmark, faEye } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faXmark } from "@fortawesome/free-solid-svg-icons";
 import Moment from "react-moment";
 import "moment/locale/fr";
 import { Modal } from "antd";
@@ -26,7 +26,9 @@ function Header() {
 
   const BACKEND_ADDRESS = window.location.hostname === 'localhost'
   ? 'http://localhost:3000'
-  : 'https://cigfreeback.vercel.app';
+  : 'https://cig-backend-vercel.vercel.app';
+
+
 
   // const backendOnline = false; // switch true or false manualy
   // if (backendOnline) {
@@ -48,10 +50,7 @@ function Header() {
     console.log(BACKEND_ADDRESS);
     fetch(`${BACKEND_ADDRESS}/users/signup`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*", //`${BACKEND_ADDRESS}` // Ajoutez cet en-tête
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: signUpUsername, password: signUpPassword }),
     })
       .then((response) => response.json())
@@ -73,6 +72,7 @@ function Header() {
   };
 
   const handleConnection = () => {
+
     console.log(
       BACKEND_ADDRESS,
       `user info conection  mail ${signInUsername} et pdw ${signInPassword}`
