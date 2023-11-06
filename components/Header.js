@@ -7,6 +7,7 @@ import { faUser, faXmark } from "@fortawesome/free-solid-svg-icons";
 import Moment from "react-moment";
 import "moment/locale/fr";
 import { Modal } from "antd";
+import Lol from "./other projet/Lol"
 // import Link from 'next/link';
 
 function Header() {
@@ -177,10 +178,10 @@ function Header() {
       user.dateCreation
     ).toLocaleDateString();
     userSectionDateinscription = (
-      <div>
-        <div>
-          <div className="sectionDate">
-            Inscrit depuis le{" "}
+      <div className={styles.containerNavigationInfo}>
+        <div className={styles.containerInscriptionDate}>
+          <div className={styles.InscriptionDate}>
+            Inscrit le{" "}
             <Moment date={formattedDateCreationUser} format="D MMMM YYYY" />
           </div>
         </div>
@@ -213,12 +214,20 @@ function Header() {
 
   return (
     <header className={styles.header}>
+      <div className={styles.headerAllContainer}>
+       <div className={styles.topHeadercontainer}>
       <div className={styles.logoContainer}>
         <Moment className={styles.date} date={date} format="D MMMM YYYY" />
         <h1 className={styles.title}>Ciga Free</h1>
         {userSection}
       </div>
-      {userSectionDateinscription}
+      </div>
+      <div className={styles.botHeadercontainer}>
+        <div className={styles.botselection}>
+          <Lol></Lol>
+          {userSectionDateinscription}
+        </div>
+      </div>
 
       {isModalVisible && (
         <div id="react-modals">
@@ -233,6 +242,7 @@ function Header() {
           </Modal>
         </div>
       )}
+      </div>
     </header>
   );
 }

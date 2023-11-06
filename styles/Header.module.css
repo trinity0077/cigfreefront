@@ -5,32 +5,41 @@
 
 .header {
 	border-bottom: 2px rgb(89, 103, 233) solid;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	
 	border-bottom-left-radius: 15px;
  	border-bottom-right-radius: 15px;
 	background-color: white;
 }
-
-.title {
-	font-size: 44px;
-	font-family: "Old London";
-	color : rgb(89, 125, 233);
-	text-shadow: 1px 1px 0px #000;
-	margin: 3px;
+.headerAllContainer{
+	padding: 10px;
 }
-
+.topHeadercontainer{
+	
+	display: flex;
+	
+	justify-content: center;
+	align-items: center;
+	
+}
 .logoContainer {
-	width: 100vw;
+	width: 98vw;
 	min-height: 15vh;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 0px 10px 0px 10px;
+	
+	
 	
 }
+.title {
+	font-size: 60px;
+	font-family: "Old London";
+	color : rgb(233, 204, 89);
+	text-shadow: 1px 1px 0px #000;
+	margin: 0px;
+}
+
+
 
 .linkContainer {
 	width: 500px;
@@ -42,7 +51,19 @@
 	font-size: 11px;
 	letter-spacing: 1px;
 }
+.botHeadercontainer{
 
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.botselection{
+	width: 98vw;
+	min-height: 5vh;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
 .userSection {
 	font-size: 22px;
 	width: 12vw;
@@ -131,7 +152,14 @@
 .error {
 	color: brown;
 }
-.sectionDate {
+.containerNavigationInfo {
+	display: flex;
+	
+	align-items: center;
+	justify-content: right;
+}
+
+.InscriptionDate {
 	font-size: 15px;
 	margin: 0;
 }
